@@ -19,8 +19,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.signInForm.value);
-    this.authService.login(this.signInForm.value.email, this.signInForm.value.password).subscribe(x => {
+    this.authService.logIn(this.signInForm.value.email, this.signInForm.value.password).subscribe(x => {
       console.log(x);
     });
   }
