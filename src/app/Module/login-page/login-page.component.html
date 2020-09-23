@@ -1,0 +1,17 @@
+<div class="form-wrapper">
+  <form class="form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+    <h2>Sign in</h2>
+    <div class="form-control">
+      <label for="email_input">Email: </label>
+      <input type="Email" id="email_input" class="form_input" formControlName="email">
+    </div>
+    <div class="form-control">
+      <label for="password_input">Password: </label>
+      <input type="Email" id="password_input" class="form_input" formControlName="password">
+    </div>
+    <div class="form-control btn-group">
+      <button type="submit">Sign In</button>
+    </div>
+    <pre>{{signInForm.value | json}}</pre>
+  </form>
+</div>
