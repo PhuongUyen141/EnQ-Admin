@@ -52,9 +52,10 @@ export class AuthService {
     return this.token;
   }
 
-  private getAdminUserInfo(token) {
+  private getAdminUserInfo(token): Observable<unknown> {
     const httpOptions = {
       headers: new HttpHeaders({
+        // tslint:disable-next-line: object-literal-key-quotes
         'token': token
       })
     };
