@@ -20,7 +20,6 @@ export class AuthInterceptor implements HttpInterceptor {
     const cloneReq = request.clone({
       headers: request.headers.set('token', token),
     });
-    console.log('Hello Interceptor');
     return next.handle(cloneReq);
   }
 }
