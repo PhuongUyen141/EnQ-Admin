@@ -27,14 +27,7 @@ export class AuthService {
       );
 
     const combined$ = outer$.pipe(
-      map((res) =>
-        this.getAdminUserInfo(res.token).pipe(
-          take(1),
-          tap((user) => {
-            this.user = user;
-          })
-        )
-      ),
+      map((res) => this.getAdminUserInfo(res.token)),
       concatAll()
     );
     return combined$;
