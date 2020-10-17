@@ -9,7 +9,9 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class LoginPageComponent implements OnInit {
   signInForm: FormGroup;
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  errorMessage: string = null;
+  isLoading = false;
+  constructor(private fb: FormBuilder, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
@@ -35,8 +37,17 @@ export class LoginPageComponent implements OnInit {
   onSubmit(): void {
     this.authService
       .logIn(this.signInForm.value.email, this.signInForm.value.password)
-      .subscribe((x) => {
-        console.log(x);
+      .subscribe({
+        next: (v: unknown) => this.handleSuccess(v),
+        error: (e: Error) => this.handleError(e)
       });
+  }
+
+  handleError(e: Error): void {
+    console.log(e.message);
+  }
+
+  handleSuccess(v: unknown): void {
+    console.log(v);
   }
 }

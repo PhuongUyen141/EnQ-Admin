@@ -11,7 +11,11 @@ export class AuthService {
   token: string = null;
   isLogging = false;
   user: any = null;
-  constructor(private httpClient: HttpClient) {}
+
+  constructor(private httpClient: HttpClient) {
+    this.user = JSON.parse(localStorage.getItem('user'));
+    console.log(this.user);
+  }
 
   logIn(userName: string, password: string): Observable<unknown> {
     const outer$ = this.httpClient
@@ -22,12 +26,18 @@ export class AuthService {
       .pipe(
         take(1),
         tap((res: any) => {
+          if (res.error) {
+            throw new Error('Failed to login');
+          }
           this.token = res.token;
-        })
+        }),
       );
 
+
     const combined$ = outer$.pipe(
-      map((res) => this.getAdminUserInfo(res.token)),
+      map((res) => {
+        return this.getAdminUserInfo(res.token);
+      }),
       concatAll()
     );
     return combined$;
@@ -68,7 +78,11 @@ export class AuthService {
       .pipe(
         take(1),
         tap((user) => {
+          if (!user) {
+            throw new Error('Failed to get user');
+          }
           this.user = user;
+          localStorage.setItem('user', JSON.stringify(user));
         })
       );
   }
