@@ -1,4 +1,4 @@
-<div class="form-wrapper">
+<!-- <div class="form-wrapper">
   <form class="form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
     <h2>Sign in</h2>
     <div class="form-control">
@@ -14,4 +14,71 @@
     </div>
     <pre>{{signInForm.value | json}}</pre>
   </form>
+</div> -->
+
+
+<div class="page-content">
+  <div class="container-form" id="container">
+    <div class="form-container sign-in-container">
+      <form class="form-content" [formGroup]="signInForm" (ngSubmit)="onSubmit()" action="#">
+        <img class="logo" src="../../../assets/logo-noname.svg">
+        <h2>Welcome to EnQ</h2>
+        <div class="form-control">
+          <!-- <label for="email_input">Email: </label> -->
+          <input type="Email" id="email-input" class="form-input" placeholder="Email" formControlName="email">
+        </div>
+        <div class="form-control">
+          <!-- <label for="password_input">Password: </label> -->
+          <input type="password" id="password-input" class="form-input" placeholder="Password" formControlName="password">
+        </div>
+        <button type="submit">Sign In</button>
+        <p>If you don't have an account <span id="signUp" (click) = onClickSignUp()>Sign up</span> here</p>
+      </form>
+    </div>
+  
+    <div class="form-container sign-up-container">
+      <form class="form-content" [formGroup]="signInForm" >
+        <img class="logo" src="../../../assets/logo-noname.svg">
+        <h2>Welcome to EnQ</h2>
+        <div class="form-control">
+          <!-- <label for="username_input">Username: </label> -->
+          <input type="Email" id="email-input" class="form-input" placeholder="Username" formControlName="">
+        </div>
+        <div class="form-control">
+          <!-- <label for="email_input">Email: </label> -->
+          <input type="email" id="password-input" class="form-input" placeholder="Email" formControlName="email">
+        </div>
+        <div class="form-control">
+          <!-- <label for="email_input">Email: </label> -->
+          <input type="password" id="email-input" class="form-input" placeholder="Password" formControlName="password">
+        </div>
+        <div class="form-control">
+          <!-- <label for="password_input">Confirm password: </label> -->
+          <input type="password" id="password-input" class="form-input" placeholder="Confirm password" formControlName="">
+        </div>
+        <button>Sign Up</button>
+        <p>Already have an account? <a id="signIn">Sign in</a> here</p>
+      </form>
+    </div>
+    <!-----------   overlay   -------------->
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-right">
+          <!-- <h1>Hello, Friend!</h1>
+          <p>Enter your details and start journey with us</p>
+          <button class="ghost" id="signUp" (click) = onClickSignUp()>Sign Up</button> -->
+          <img class="image" src="../../../assets/login.svg">
+          <p class="quote">Improve your English with EnQ</p>
+        </div>
+        <div class="overlay-panel overlay-left">
+          <!-- <h1>Welcome Back!</h1>
+          <p>To keep connected with us please login with your personal info</p>
+          <button class="ghost" id="signIn" (click) = onClickSignIn()>Sign In</button> -->
+          <img class="image" src="../../../assets/login.svg">
+          <p class="quote">Improve your English with EnQ</p>
+        </div>
+      </div> 
+      
+    </div>
+  </div>
 </div>

@@ -16,6 +16,8 @@ html {
 body {
   font-size: 1.6rem;
   box-sizing: border-box;
+  overflow: hidden;
+  
 }
 
 body, html {
@@ -23,5 +25,14 @@ body, html {
   padding: 0;
 }
 
+.container {
+  width: 100%;
+  // max-width: 100%;
+  margin: 0 auto;
+}
+
+.container-fluid {
+  width: 100%;
+}
 
 

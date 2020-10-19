@@ -50,4 +50,25 @@ export class LoginPageComponent implements OnInit {
   handleSuccess(v: unknown): void {
     console.log(v);
   }
+
+  signUpButton: HTMLElement  = document.getElementById('signUp');
+	signInButton = <HTMLInputElement> document.getElementById('signIn');
+	container = <HTMLInputElement> document.getElementById('container');
+
+  onClickSignUp(): void {
+      if(this.signUpButton){
+        this.signUpButton.addEventListener('click', () => {
+          this.container.classList.add("right-panel-active");
+          console.log('abc');  
+        });
+      }else{
+        console.log("null: " + this.signUpButton);
+      }
+  }
+
+  onClickSignIn(): void {
+      this.signInButton.addEventListener('click', () => {
+      this.container.classList.remove("right-panel-active");
+    });
+  }
 }
